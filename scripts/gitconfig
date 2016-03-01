@@ -11,8 +11,8 @@
   rpo = remote prune origin
   clbr = "!git branch --merged | grep  -v '\\*\\|master\\|staging|staging2|production' | xargs -n 1 git branch -d"
 [user]
-  name = "Flemming Thesbjerg"
-  email = flemming.thesbjerg@gmail.com
+  name = "Søren Rehné"
+  email = soren@rehne.dk
 [color]
   diff = auto
   status = auto
@@ -38,4 +38,9 @@
 [branch]
   autosetuprebase = always
 [push]
-  default = current
+
+  default = simple
+[filter "media"]
+	clean = git media clean %f
+	smudge = git media smudge %f
+	required = true
