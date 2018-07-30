@@ -19,8 +19,8 @@ plugins=(docker git gem rails ruby heroku bundler brew pass npm)
 source $ZSH/oh-my-zsh.sh
 [ -f dnvm.sh ] &&  source dnvm.sh
 
-source /usr/local/share/chruby/chruby.sh
-source /usr/local/share/chruby/auto.sh
+# source /usr/local/share/chruby/chruby.sh
+# source /usr/local/share/chruby/auto.sh
 
 export INC=$INC:~/perl5/perlbrew/perls/perl-5.20.1/lib/site_perl/5.20.1/
 
@@ -31,7 +31,9 @@ export PATH=$PATH:~/SSHcoms
 #PATH=$PATH:/opt/local/bin
 PATH=$PATH:~/bin
 
-NODES+=(/usr/local/Cellar/node/*)
+# NVM
+export NVM_DIR="$HOME/.nvm"
+. "/usr/local/opt/nvm/nvm.sh"
 
 [ -f dinghy ] && eval "$(dinghy shellinit)"
 
@@ -41,9 +43,21 @@ export DISPLAY=:0
 
 export PATH="$MAGICK_HOME/bin:$PATH"
 
+export PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
+export PATH=$PATH:/Applications/MySQLWorkbench.app/Contents/MacOS
 
 export EDITOR=emacs
 export PAPERTRAIL_API_TOKEN='HM3R8IJe0xujQDiTY'
 
 #THIS MUST BE AT THE END OF THE FILE FOR JENV TO WORK!!!
 [[ -s "/Users/sre/.jenv/bin/jenv-init.sh" ]] && source "/Users/sre/.jenv/bin/jenv-init.sh" && source "/Users/sre/.jenv/commands/completion.sh"
+
+alias ct-dokku="ssh -i /Users/sre/ct-backupserver.pem -t ubuntu@dokku.cartracking.dk dokku"
+alias some-dokku="ssh -t somebody@136.243.74.165 dokku"
+alias ct-dokku-login="ssh -i /Users/sre/Dropbox/someBody\ ApS/Kunder/PB\ Cartrading/PB\ Cartrading\ Documents/Server\ keys/backupserver.pem ubuntu@dokku.cartracking.dk"
+alias some-dokku-login="ssh -t somebody@136.243.74.165"
+alias ct-backup="ssh -i /Users/sre/ct-backupserver.pem -t ubuntu@ec2-34-251-134-32.eu-west-1.compute.amazonaws.com"
+alias sdock="sudo docker"
+
+export SCREENADOIP1=`ipconfig getifaddr en0`
+export SCREENADOIP2=192.168.0.130
